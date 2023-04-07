@@ -8,17 +8,9 @@ import {RestService} from "../rest.service";
 })
 export class HomeComponent implements OnInit{
 
-  myFavouritePlaces: any = []
-  constructor(private restService: RestService) {
+  constructor() {
   }
-
   ngOnInit() {
-    this.getPlacesDetails();
   }
 
-  getPlacesDetails() {
-    this.restService.placesDetail().subscribe(response => {
-      this.myFavouritePlaces = response
-    });
-  }
 }
