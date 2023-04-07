@@ -1,17 +1,19 @@
-<div class="p-4">
-  <h1 class="d-flex justify-content-center">Welcome to Home</h1>
-</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-3"></div>
 
-<!--Top visiting place in India-->
-<div class="row">
-  <div class="col-2"></div>
-  <div class="col-8 my-places-container">
-    <h2 class="d-flex justify-content-center">My Favourite Places</h2>
-    <div class="d-flex p-2">
-      <div *ngFor="let myPlace of myFavouritePlaces" class="card-style">
-        <app-card [myFavouritePlace]="myPlace"></app-card>
+<!--    My Favourite Places-->
+    <div class="col">
+      <div class="text-center p-3">
+        <h1>My Favourite Places</h1>
+      </div>
+      <div style="background-color: aquamarine; padding: 20px; border-radius: 20px">
+        <div *ngFor="let myPlace of myFavouritePlaces">
+          <app-card [myFavouritePlace]="myPlace"></app-card>
+        </div>
       </div>
     </div>
+
+    <div class="col-3"></div>
   </div>
-  <div class="col-2"></div>
 </div>
