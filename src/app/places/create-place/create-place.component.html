@@ -1,0 +1,22 @@
+<div style="background-color: antiquewhite; padding: 25px; width: 60vw;">
+  <form [formGroup]="newPlace" (ngSubmit)="createNewPlace()">
+    <div class="form-group">
+      <label>Place Title</label>
+      <input type="text" class="form-control" placeholder="Enter place title" formControlName="title">
+    </div>
+
+    <div class="form-group" style="margin: 5px 0">
+      <label>Place Description</label>
+      <input type="text" class="form-control" placeholder="Enter place description" formControlName="description">
+    </div>
+
+    <div class="form-group">
+      <label>Image Link</label>
+      <input type="text" class="form-control" placeholder="Enter image link" formControlName="imageLink">
+    </div>
+
+    <div class="d-flex justify-content-center" style="margin-top: 10px">
+      <button mat-dialog-close type="submit" class="btn btn-success" [disabled]="!newPlace.valid">Add new Place</button>
+    </div>
+  </form>
+</div>

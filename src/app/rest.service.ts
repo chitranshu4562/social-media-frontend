@@ -26,4 +26,14 @@ export class RestService {
       return result;
     }));
   }
+  createPlace(data: any) {
+    return this.http.post(this.apiUrl + 'create_favorite_places', data).pipe(map((responseData: any) => {
+      const obj = {
+        cardTitle: responseData.data.title,
+        cardDescription: responseData.data.description,
+        imageLink: responseData.data.imageLink
+      }
+      return obj;
+    }));
+  }
 }
