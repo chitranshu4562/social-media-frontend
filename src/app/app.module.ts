@@ -12,6 +12,9 @@ import {ReactiveFormsModule} from "@angular/forms";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
+import { AuthComponent } from './authentication/auth/auth.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 @NgModule({
   declarations: [
@@ -19,7 +22,9 @@ import {MatButtonModule} from "@angular/material/button";
     HomeComponent,
     CardComponent,
     PlacesComponent,
-    CreatePlaceComponent
+    CreatePlaceComponent,
+    AuthComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +33,8 @@ import {MatButtonModule} from "@angular/material/button";
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

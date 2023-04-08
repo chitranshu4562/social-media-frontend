@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {RestService} from "../rest.service";
+import {MatDialog} from "@angular/material/dialog";
+import {CreatePlaceComponent} from "./create-place/create-place.component";
 
 @Component({
   selector: 'app-places',
@@ -9,7 +11,7 @@ import {RestService} from "../rest.service";
 export class PlacesComponent implements OnInit{
 
   myFavouritePlaces: any = []
-  constructor(private restService: RestService) {
+  constructor(private restService: RestService, private dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -22,4 +24,12 @@ export class PlacesComponent implements OnInit{
     });
   }
 
+  openDialog() {
+    const dialogRef = this.dialog.open(CreatePlaceComponent);
+    dialogRef.afterClosed().subscribe(response => {
+      if (response) {
+        this.myFavouritePlaces.splice(0, 0, response);
+      }
+    })
+  }
 }

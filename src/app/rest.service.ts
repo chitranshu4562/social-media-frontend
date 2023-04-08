@@ -7,13 +7,13 @@ import {map} from "rxjs";
 })
 export class RestService {
 
-  apiUrl = 'http://localhost:3000//api/v1/places/'
+  apiUrl = 'http://localhost:3000//api/v1/'
 
   constructor(private http: HttpClient) {
   }
 
   placesDetail() {
-    return this.http.get(this.apiUrl + 'places_details').pipe(map((responseData: any) => {
+    return this.http.get(this.apiUrl + 'places/places_details').pipe(map((responseData: any) => {
       const result: any = [];
       responseData.data.forEach((res: any) => {
         const obj = {
@@ -27,7 +27,7 @@ export class RestService {
     }));
   }
   createPlace(data: any) {
-    return this.http.post(this.apiUrl + 'create_favorite_places', data).pipe(map((responseData: any) => {
+    return this.http.post(this.apiUrl + 'places/create_favorite_places', data).pipe(map((responseData: any) => {
       const obj = {
         cardTitle: responseData.data.title,
         cardDescription: responseData.data.description,
@@ -35,5 +35,8 @@ export class RestService {
       }
       return obj;
     }));
+  }
+  createUser(data: any) {
+    return this.http.post(this.apiUrl + 'users/user_signup', data);
   }
 }
