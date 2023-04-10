@@ -15,6 +15,7 @@ import {MatButtonModule} from "@angular/material/button";
 import { AuthComponent } from './authentication/auth/auth.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
     BrowserAnimationsModule,
     MatDialogModule,
     MatButtonModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

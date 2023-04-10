@@ -11,7 +11,7 @@ import {MatDialogRef} from "@angular/material/dialog";
 export class CreatePlaceComponent implements OnInit{
 
 
-  newPlace = new UntypedFormGroup({
+  newPlaceForm = new UntypedFormGroup({
     title: new UntypedFormControl('', Validators.required),
     description: new UntypedFormControl(''),
     imageLink: new UntypedFormControl('', Validators.required)
@@ -22,9 +22,8 @@ export class CreatePlaceComponent implements OnInit{
   ngOnInit() {
   }
   createNewPlace() {
-    this.restService.createPlace(this.newPlace.value).subscribe((response: any) => {
-      console.log(response);
-      this.newPlace.reset();
+    this.restService.createPlace(this.newPlaceForm.value).subscribe((response: any) => {
+      this.newPlaceForm.reset();
       this.dialogRef.close(response);
     }, error => {
       console.error(error);

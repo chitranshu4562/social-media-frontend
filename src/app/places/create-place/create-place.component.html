@@ -1,5 +1,5 @@
 <div style="background-color: antiquewhite; padding: 25px; width: 60vw;">
-  <form [formGroup]="newPlace" (ngSubmit)="createNewPlace()">
+  <form [formGroup]="newPlaceForm" (ngSubmit)="createNewPlace()">
     <div class="form-group">
       <label>Place Title</label>
       <input type="text" class="form-control" placeholder="Enter place title" formControlName="title">
@@ -16,7 +16,7 @@
     </div>
 
     <div class="d-flex justify-content-center" style="margin-top: 10px">
-      <button mat-dialog-close type="submit" class="btn btn-success" [disabled]="!newPlace.valid">Add new Place</button>
+      <button mat-dialog-close type="submit" class="btn btn-success" [disabled]="!newPlaceForm.valid">Add new Place</button>
     </div>
   </form>
 </div>

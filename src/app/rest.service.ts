@@ -7,19 +7,19 @@ import {map} from "rxjs";
 })
 export class RestService {
 
-  apiUrl = 'http://localhost:3000//api/v1/'
+  apiUrl = 'http://localhost:3000/api/v1/'
 
   constructor(private http: HttpClient) {
   }
 
   placesDetail() {
-    return this.http.get(this.apiUrl + 'places/places_details').pipe(map((responseData: any) => {
+    return this.http.get(this.apiUrl + 'places/places_detail').pipe(map((responseData: any) => {
       const result: any = [];
       responseData.data.forEach((res: any) => {
         const obj = {
           cardTitle: res.title,
           cardDescription: res.description,
-          imageLink: res.imageLink
+          imageLink: res.image_link
         }
         result.push(obj);
       })
@@ -31,12 +31,9 @@ export class RestService {
       const obj = {
         cardTitle: responseData.data.title,
         cardDescription: responseData.data.description,
-        imageLink: responseData.data.imageLink
+        imageLink: responseData.data.image_link
       }
       return obj;
     }));
-  }
-  createUser(data: any) {
-    return this.http.post(this.apiUrl + 'users/user_signup', data);
   }
 }

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import {UntypedFormControl, UntypedFormGroup, Validators} from "@angular/forms";
-import {RestService} from "../../rest.service";
+import {AuthService} from "../auth.service";
+import {Router} from "@angular/router";
+import {MessageService} from "../../message.service";
 
 @Component({
   selector: 'app-auth',
@@ -14,19 +16,35 @@ export class AuthComponent {
     password: new UntypedFormControl('', Validators.required)
   })
   isLoading = false;
-
-  constructor(private restService: RestService) {
+  isLogin = true;
+  constructor(private authService: AuthService,
+              private router: Router, private messageService: MessageService) {
   }
 
   submit() {
     this.isLoading = true;
-    this.restService.createUser(this.authForm.value).subscribe(response => {
-      console.log(response);
-      this.isLoading = false;
-    }, error => {
-      console.error(error);
-      this.isLoading = false;
-    })
-    this.authForm.reset();
+    if (this.isLogin) {
+      this.authService.login(this.authForm.value).subscribe(response => {
+        this.isLoading = false;
+        this.router.navigate(['']);
+      }, error => {
+        this.isLoading = false;
+        this.messageService.displayErrorMessage(error.error.error);
+      })
+      this.authForm.reset();
+    } else {
+      this.authService.signUp(this.authForm.value).subscribe(response => {
+        this.isLoading = false;
+        this.router.navigate(['']);
+      }, error => {
+        this.isLoading = false;
+        this.messageService.displayErrorMessage(error.error.error[0]);
+      })
+      this.authForm.reset();
+    }
+  }
+
+  switchMode() {
+    this.isLogin = !this.isLogin;
   }
 }
