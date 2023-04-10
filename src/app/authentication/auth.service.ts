@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import {RestService} from "../rest.service";
 import {BehaviorSubject, map, tap} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {User} from "./user.model";
