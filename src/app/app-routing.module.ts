@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'places', component: PlacesComponent },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuardService] },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: '**', component: PageNotFoundComponent }
+  { path: '**', component: PageNotFoundComponent, canActivate: [AuthGuardService] }
 ];
 
 @NgModule({

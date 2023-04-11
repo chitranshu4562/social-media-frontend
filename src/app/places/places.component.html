@@ -3,6 +3,9 @@
   <div class="p-2 d-flex justify-content-end">
     <button class="btn btn-success btn-lg" (click)="openDialog()">Add New Place</button>
   </div>
+  <div class="p-2 d-flex justify-content-center" *ngIf="myFavouritePlaces.length === 0">
+    <h1>No place found</h1>
+  </div>
   <div *ngFor="let myPlace of myFavouritePlaces">
     <app-card [myFavouritePlace]="myPlace"></app-card>
   </div>

@@ -14,7 +14,8 @@ export class CreatePlaceComponent implements OnInit{
   newPlaceForm = new UntypedFormGroup({
     title: new UntypedFormControl('', Validators.required),
     description: new UntypedFormControl(''),
-    imageLink: new UntypedFormControl('', Validators.required)
+    imageLink: new UntypedFormControl('', Validators.required),
+    place_tag: new UntypedFormControl('public', Validators.required)
   })
 
   constructor(private restService: RestService, private dialogRef: MatDialogRef<CreatePlaceComponent>) {

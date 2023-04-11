@@ -1,9 +1,15 @@
 <div class="container-fluid">
+  <div style="display: flex; padding: 20px">
+    <div style="flex: 90%; font-family: revert; font-size: 20px">User profile: {{ loggedInUser }}</div>
+    <div style="flex: 10%">
+      <button class="btn btn-danger btn-lg" (click)="onLogout()">Log Out</button>
+    </div>
+  </div>
   <div class="row">
     <div class="col-3"></div>
 
 <!--    My Favourite Places-->
-    <div class="col">
+    <div class="col" style="margin-top: -80px;">
       <div class="text-center p-3">
         <h1 style="font-size: 35px; font-family: revert; font-weight: 500;" *ngIf="isAuthenticated">My Favourite Places</h1>
         <h1 style="font-size: 35px; font-family: revert; font-weight: 500;" *ngIf="!isAuthenticated">You are not authenticated</h1>
@@ -12,9 +18,6 @@
     </div>
 
     <div class="col-3">
-      <div class="d-flex justify-content-end p-2">
-        <button class="btn btn-danger btn-lg" (click)="onLogout()">Log Out</button>
-      </div>
     </div>
   </div>
 </div>

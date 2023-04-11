@@ -1,7 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AuthService} from "../authentication/auth.service";
 import {Subscription} from "rxjs";
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -11,11 +10,13 @@ export class HomeComponent implements OnInit, OnDestroy{
 
   isAuthenticated = false;
   userSub: Subscription | undefined;
+  loggedInUser = '';
   constructor(private authService: AuthService) {
   }
   ngOnInit() {
-    this.userSub = this.authService.user.subscribe(user => {
+    this.userSub = this.authService.user.subscribe((user: any) => {
       this.isAuthenticated = user ? true : false;
+      this.loggedInUser = user.email;
     })
   }
 

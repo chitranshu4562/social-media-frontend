@@ -20,7 +20,8 @@ export class RestService {
         const obj = {
           cardTitle: res.title,
           cardDescription: res.description,
-          imageLink: res.image_link
+          imageLink: res.image_link,
+          userEmail: res.user_email
         }
         result.push(obj);
       })
@@ -32,7 +33,8 @@ export class RestService {
       const obj = {
         cardTitle: responseData.data.title,
         cardDescription: responseData.data.description,
-        imageLink: responseData.data.image_link
+        imageLink: responseData.data.image_link,
+        userEmail: responseData.data.user_email
       }
       return obj;
     }));
