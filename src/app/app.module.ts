@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { CardComponent } from './shared/card/card.component';
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {PlacesComponent} from "./places/places.component";
 import { CreatePlaceComponent } from './places/create-place/create-place.component';
 import {ReactiveFormsModule} from "@angular/forms";
@@ -16,6 +16,7 @@ import { AuthComponent } from './authentication/auth/auth.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {AuthInterceptorService} from "./authentication/auth-interceptor.service";
 
 @NgModule({
   declarations: [
@@ -38,7 +39,7 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
     MatProgressSpinnerModule,
     MatSnackBarModule
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

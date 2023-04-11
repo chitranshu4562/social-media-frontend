@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {map} from "rxjs";
 
 @Injectable({
@@ -13,7 +13,8 @@ export class RestService {
   }
 
   placesDetail() {
-    return this.http.get(this.apiUrl + 'places/places_detail').pipe(map((responseData: any) => {
+    return this.http.get(this.apiUrl + 'places/places_detail')
+      .pipe(map((responseData: any) => {
       const result: any = [];
       responseData.data.forEach((res: any) => {
         const obj = {
