@@ -32,4 +32,10 @@ export class PlacesComponent implements OnInit{
       }
     })
   }
+
+  deletePlace(id: any) {
+    console.log(id);
+    const index = this.myFavouritePlaces.findIndex((place: any) => place.id === id);
+    this.myFavouritePlaces.splice(index, 1);
+  }
 }

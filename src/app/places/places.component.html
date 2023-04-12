@@ -7,6 +7,6 @@
     <h1>No place found</h1>
   </div>
   <div *ngFor="let myPlace of myFavouritePlaces">
-    <app-card [myFavouritePlace]="myPlace"></app-card>
+    <app-card [myFavouritePlace]="myPlace" (deletePlace)="deletePlace($event)"></app-card>
   </div>
 </div>

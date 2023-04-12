@@ -10,6 +10,10 @@
           <h5 style="flex: 50%">Created by: {{ myFavouritePlace.userEmail }}</h5>
         </div>
         <p class="card-text">{{ myFavouritePlace.cardDescription }}</p>
+        <div style="display: flex; justify-content: end;">
+          <button class="btn btn-primary" style="margin-right: 5px" (click)="comingSoon()">Edit</button>
+          <button class="btn btn-danger" (click)="delete(myFavouritePlace)">Delete</button>
+        </div>
       </div>
     </div>
   </div>

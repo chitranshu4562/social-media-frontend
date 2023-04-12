@@ -13,4 +13,10 @@ export class MessageService {
       duration: 5000
     });
   }
+
+  displayMessage(message: string) {
+    this.snackBar.open(message, 'Okay', {
+      duration: 5000
+    })
+  }
 }

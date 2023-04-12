@@ -18,6 +18,7 @@ export class RestService {
       const result: any = [];
       responseData.data.forEach((res: any) => {
         const obj = {
+          id: res.id,
           cardTitle: res.title,
           cardDescription: res.description,
           imageLink: res.image_link,
@@ -31,6 +32,7 @@ export class RestService {
   createPlace(data: any) {
     return this.http.post(this.apiUrl + 'places/create_favorite_places', data).pipe(map((responseData: any) => {
       const obj = {
+        id: responseData.data.id,
         cardTitle: responseData.data.title,
         cardDescription: responseData.data.description,
         imageLink: responseData.data.image_link,
@@ -38,5 +40,11 @@ export class RestService {
       }
       return obj;
     }));
+  }
+  updatePlace(data: any) {
+    return this.http.post(this.apiUrl + 'places/edit_place', data);
+  }
+  deletePlace(id: number) {
+    return this.http.get(this.apiUrl + 'places/delete_place?id=' + id);
   }
 }
