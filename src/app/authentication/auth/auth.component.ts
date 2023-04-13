@@ -11,7 +11,7 @@ import {MessageService} from "../../message.service";
 })
 export class AuthComponent {
 
-  authForm = new UntypedFormGroup({
+  logInForm = new UntypedFormGroup({
     email: new UntypedFormControl('', [Validators.required, Validators.email]),
     password: new UntypedFormControl('', Validators.required)
   })
@@ -22,13 +22,13 @@ export class AuthComponent {
 
   submit() {
     this.isLoading = true;
-    this.authService.login(this.authForm.value).subscribe(response => {
+    this.authService.login(this.logInForm.value).subscribe(response => {
       this.isLoading = false;
       this.router.navigate(['']);
     }, error => {
       this.isLoading = false;
       this.messageService.displayErrorMessage(error.error.error);
     })
-    this.authForm.reset();
+    this.logInForm.reset();
   }
 }

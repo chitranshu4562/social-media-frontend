@@ -11,7 +11,9 @@ import {Router} from "@angular/router";
 })
 export class SignUpComponent {
 
-  authForm = new UntypedFormGroup({
+  signUpForm = new UntypedFormGroup({
+    firstName: new UntypedFormControl('', Validators.required),
+    lastName: new UntypedFormControl(''),
     email: new UntypedFormControl('', [Validators.required, Validators.email]),
     password: new UntypedFormControl('', Validators.required)
   })
@@ -22,14 +24,14 @@ export class SignUpComponent {
   }
   submit() {
     this.isLoading = true;
-    this.authService.signUp(this.authForm.value).subscribe(response => {
+    this.authService.signUp(this.signUpForm.value).subscribe(response => {
       this.isLoading = false;
       this.router.navigate(['']);
     }, error => {
       this.isLoading = false;
       this.messageService.displayErrorMessage(error.error.error[0]);
     })
-    this.authForm.reset();
+    this.signUpForm.reset();
   }
 
 
