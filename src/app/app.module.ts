@@ -18,6 +18,10 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {AuthInterceptorService} from "./authentication/auth-interceptor.service";
 import {MatRadioModule} from "@angular/material/radio";
+import { SignUpComponent } from './authentication/sign-up/sign-up.component';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatIconModule} from "@angular/material/icon";
+import {MatInputModule} from "@angular/material/input";
 
 @NgModule({
   declarations: [
@@ -27,7 +31,8 @@ import {MatRadioModule} from "@angular/material/radio";
     PlacesComponent,
     CreatePlaceComponent,
     AuthComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +44,10 @@ import {MatRadioModule} from "@angular/material/radio";
     MatButtonModule,
     MatProgressSpinnerModule,
     MatSnackBarModule,
-    MatRadioModule
+    MatRadioModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true }],
   bootstrap: [AppComponent]

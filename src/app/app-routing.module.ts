@@ -6,9 +6,11 @@ import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
 import {HomeComponent} from "./home/home.component";
 import {AuthGuardService} from "./authentication/auth-guard.service";
 import {PreventAuthPageService} from "./authentication/prevent-auth-page.service";
+import {SignUpComponent} from "./authentication/sign-up/sign-up.component";
 
 const routes: Routes = [
-  { path: 'auth', component: AuthComponent, canActivate: [PreventAuthPageService] },
+  { path: 'login', component: AuthComponent, canActivate: [PreventAuthPageService] },
+  { path: 'sign-up', component: SignUpComponent, canActivate: [PreventAuthPageService]},
   { path: 'places', component: PlacesComponent },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuardService] },
   { path: '', redirectTo: '/home', pathMatch: 'full' },

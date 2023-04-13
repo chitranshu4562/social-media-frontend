@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {RestService} from "../rest.service";
 import {MatDialog} from "@angular/material/dialog";
 import {CreatePlaceComponent} from "./create-place/create-place.component";
+import {MessageService} from "../message.service";
 
 @Component({
   selector: 'app-places',
@@ -11,7 +12,7 @@ import {CreatePlaceComponent} from "./create-place/create-place.component";
 export class PlacesComponent implements OnInit{
 
   myFavouritePlaces: any = []
-  constructor(private restService: RestService, private dialog: MatDialog) {
+  constructor(private restService: RestService, private dialog: MatDialog, private messageService: MessageService) {
   }
 
   ngOnInit() {
@@ -21,6 +22,8 @@ export class PlacesComponent implements OnInit{
   getPlacesDetails() {
     this.restService.placesDetail().subscribe(response => {
       this.myFavouritePlaces = response
+    }, error => {
+      this.messageService.displayMessage(error.error.error);
     });
   }
 
