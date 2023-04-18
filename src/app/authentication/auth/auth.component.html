@@ -1,4 +1,7 @@
-<section class="h-100 gradient-form" style="background-color: #eee;">
+<div class="d-flex justify-content-center p-5" *ngIf="isLoading">
+  <mat-spinner></mat-spinner>
+</div>
+<section class="h-100 gradient-form" style="background-color: #eee;" *ngIf="!isLoading">
   <div class="container py-3 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-xl-10">
@@ -10,7 +13,7 @@
                 <div class="text-center">
                   <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
                        style="width: 185px;" alt="logo">
-                  <h4 class="mt-1 mb-5 pb-1">We are The Lotus Team</h4>
+                  <h4 class="mt-1 mb-5 pb-1" style="font-size: 25px">Login Form</h4>
                 </div>
 
                 <form [formGroup]="logInForm" (ngSubmit)="submit()">
