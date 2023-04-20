@@ -11,8 +11,8 @@
         </div>
         <p class="card-text">{{ myFavouritePlace.cardDescription }}</p>
         <div style="display: flex; justify-content: end;">
-          <button class="btn btn-primary" style="margin-right: 5px" (click)="comingSoon()">Edit</button>
-          <button class="btn btn-danger" (click)="delete(myFavouritePlace)">Delete</button>
+          <button class="btn btn-primary" [disabled]="!permissionFlag" style="margin-right: 5px" (click)="edit(myFavouritePlace)">Edit</button>
+          <button class="btn btn-danger" [disabled]="!permissionFlag" (click)="delete(myFavouritePlace)">Delete</button>
         </div>
       </div>
     </div>

@@ -21,6 +21,7 @@ export class RestService {
           id: res.id,
           cardTitle: res.title,
           cardDescription: res.description,
+          placeTag: res.place_tag,
           imageLink: res.image_link,
           userEmail: res.user_email
         }
@@ -35,6 +36,7 @@ export class RestService {
         id: responseData.data.id,
         cardTitle: responseData.data.title,
         cardDescription: responseData.data.description,
+        placeTag: responseData.data.place_tag,
         imageLink: responseData.data.image_link,
         userEmail: responseData.data.user_email
       }
@@ -42,7 +44,17 @@ export class RestService {
     }));
   }
   updatePlace(data: any) {
-    return this.http.post(this.apiUrl + 'places/edit_place', data);
+    return this.http.post(this.apiUrl + 'places/edit_place', data).pipe(map((responseData: any) => {
+      const obj = {
+        id: responseData.data.id,
+        cardTitle: responseData.data.title,
+        cardDescription: responseData.data.description,
+        placeTag: responseData.data.place_tag,
+        imageLink: responseData.data.image_link,
+        userEmail: responseData.data.user_email
+      }
+      return obj;
+    }));
   }
   deletePlace(id: number) {
     return this.http.get(this.apiUrl + 'places/delete_place?id=' + id);
