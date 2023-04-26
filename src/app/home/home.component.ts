@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit, OnDestroy{
     this.userSub = this.authService.user.subscribe((user: any) => {
       this.isAuthenticated = user ? true : false;
       if (this.isAuthenticated) {
-        this.loggedInUser = user.email;
+        this.loggedInUser = `${user.firstName} ${user.lastName}`;
       }
     })
   }

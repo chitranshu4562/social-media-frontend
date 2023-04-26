@@ -7,6 +7,8 @@ import {Router} from "@angular/router";
 export interface AuthResponseData {
   id: number;
   email: string;
+  first_name: string;
+  last_name?: string;
   auth_token: string;
   expires_in: number
 }
@@ -26,20 +28,22 @@ export class AuthService {
   signUp(data: any) {
     return this.http.post<AuthResponseData>(this.API_URL + 'users/user_signup', data)
       .pipe(tap(responseData => {
-        this.handleAuthentication(responseData.id, responseData.email, responseData.auth_token, responseData.expires_in);
+        this.handleAuthentication(responseData.id, responseData.email, responseData.auth_token, responseData.expires_in,
+                                  responseData.first_name, responseData.last_name);
       }));
   }
 
   login(data: any) {
     return this.http.post<AuthResponseData>(this.API_URL + 'users/user_login', data)
       .pipe(tap(responseData => {
-        this.handleAuthentication(responseData.id, responseData.email, responseData.auth_token, responseData.expires_in);
+        this.handleAuthentication(responseData.id, responseData.email, responseData.auth_token, responseData.expires_in,
+                                  responseData.first_name, responseData.last_name);
       }))
   }
 
-  private handleAuthentication(id: number, email: string, authToken: string, expiresIn: number) {
+  private handleAuthentication(id: number, email: string, authToken: string, expiresIn: number, firstName: string, lastName?: string) {
     const tokenExpirationDate = new Date(new Date().getTime() + (expiresIn * 1000));
-    const user = new User(id, email, authToken, tokenExpirationDate);
+    const user = new User(id, email, authToken, tokenExpirationDate, firstName, lastName);
     // @ts-ignore
     this.user.next(user);
     this.autoLogout(expiresIn * 1000);
@@ -52,7 +56,7 @@ export class AuthService {
     if (!userData) {
       return;
     }
-    const loadedUser = new User(userData.id, userData.email, userData._token, userData._tokenExpirationDate);
+    const loadedUser = new User(userData.id, userData.email, userData._token, userData._tokenExpirationDate, userData.firstName, userData.lastName);
     if (loadedUser.token) {
       const expirationDuration = new Date(userData._tokenExpirationDate).getTime() - new Date().getTime();
       this.autoLogout(expirationDuration);
