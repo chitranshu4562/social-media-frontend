@@ -23,8 +23,10 @@ export class CardComponent implements OnInit{
 
   ngOnInit(): void {
         this.authService.user.subscribe((user: any) => {
-          if (user.email === this.myFavouritePlace.userEmail) {
-            this.permissionFlag = true;
+          if (user) {
+            if (user.email === this.myFavouritePlace.userEmail) {
+              this.permissionFlag = true;
+            }
           }
         })
     }
